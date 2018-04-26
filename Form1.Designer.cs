@@ -31,8 +31,8 @@
 			this.InsertPlayerButton = new System.Windows.Forms.Button();
 			this.DeletePlayerButton = new System.Windows.Forms.Button();
 			this.PlayerGridView = new System.Windows.Forms.DataGridView();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.SavePlayersButton = new System.Windows.Forms.Button();
+			this.LoadPlayersButton = new System.Windows.Forms.Button();
 			this.tabControl1 = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -70,23 +70,25 @@
 			this.PlayerGridView.Size = new System.Drawing.Size(841, 790);
 			this.PlayerGridView.TabIndex = 2;
 			// 
-			// button3
+			// SavePlayersButton
 			// 
-			this.button3.Location = new System.Drawing.Point(933, 148);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 3;
-			this.button3.Text = "button3";
-			this.button3.UseVisualStyleBackColor = true;
+			this.SavePlayersButton.Location = new System.Drawing.Point(877, 142);
+			this.SavePlayersButton.Name = "SavePlayersButton";
+			this.SavePlayersButton.Size = new System.Drawing.Size(172, 37);
+			this.SavePlayersButton.TabIndex = 3;
+			this.SavePlayersButton.Text = "선수 목록 저장";
+			this.SavePlayersButton.UseVisualStyleBackColor = true;
+			this.SavePlayersButton.Click += new System.EventHandler(this.SavePlayerListToFile);
 			// 
-			// button4
+			// LoadPlayersButton
 			// 
-			this.button4.Location = new System.Drawing.Point(933, 177);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(75, 23);
-			this.button4.TabIndex = 4;
-			this.button4.Text = "button4";
-			this.button4.UseVisualStyleBackColor = true;
+			this.LoadPlayersButton.Location = new System.Drawing.Point(877, 185);
+			this.LoadPlayersButton.Name = "LoadPlayersButton";
+			this.LoadPlayersButton.Size = new System.Drawing.Size(172, 38);
+			this.LoadPlayersButton.TabIndex = 4;
+			this.LoadPlayersButton.Text = "선수 목록 로드";
+			this.LoadPlayersButton.UseVisualStyleBackColor = true;
+			this.LoadPlayersButton.Click += new System.EventHandler(this.LoadPlayersFromFile);
 			// 
 			// tabControl1
 			// 
@@ -125,8 +127,8 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1061, 858);
 			this.Controls.Add(this.tabControl1);
-			this.Controls.Add(this.button4);
-			this.Controls.Add(this.button3);
+			this.Controls.Add(this.LoadPlayersButton);
+			this.Controls.Add(this.SavePlayersButton);
 			this.Controls.Add(this.DeletePlayerButton);
 			this.Controls.Add(this.InsertPlayerButton);
 			this.Name = "Form1";
@@ -143,8 +145,8 @@
 		private System.Windows.Forms.Button InsertPlayerButton;
 		private System.Windows.Forms.Button DeletePlayerButton;
 		private System.Windows.Forms.DataGridView PlayerGridView;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button4;
+		private System.Windows.Forms.Button SavePlayersButton;
+		private System.Windows.Forms.Button LoadPlayersButton;
 		private System.Windows.Forms.TabControl tabControl1;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabPage tabPage2;

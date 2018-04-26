@@ -53,7 +53,6 @@ namespace MakeBestBalance_LoL
 
 			_gridView.Rows.Clear();
 
-			/// int rowIdx = 0;
 			foreach(var playerInfo in playerList)
 			{
 				string name        = playerInfo.Name;

@@ -50,15 +50,15 @@ namespace MakeBestBalance_LoL
 				newPlayer.SetScore(PlayerPosition.Support, Convert.ToSingle(SupportText.Text));
 
 				newPlayer.Name = NameText.Text;
-				newPlayer.GameId = GameIdText.Text; 
+				newPlayer.GameId = GameIdText.Text;
+
+				var playerManager = PlayerManager.Instance;
+				playerManager.AddPlayer(newPlayer);
 			}
 			catch (Exception exception)
 			{
-				MessageBox.Show($"에러입니다 :D \n ErrorMsg : {exception.Message}");
+				MessageBox.Show($"에러입니다 :D \nErrorMsg : {exception.Message}");
 			}
-
-			var playerManager = PlayerManager.Instance;
-			playerManager.AddPlayer(newPlayer);
 
 			this.Close();
 		}

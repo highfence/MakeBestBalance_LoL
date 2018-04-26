@@ -35,5 +35,27 @@ namespace MakeBestBalance_LoL
 				PlayerManager.Instance.UpdatePlayerGrid();
 			}
 		}
+
+		private void SavePlayerListToFile(object sender, EventArgs e)
+		{
+			var fileManager = FileManager.Instace;
+			var savePath = fileManager.OpenSaveFileDirectoryWindow("저장할 폴더를 선택해주세요.", "mbb", "MakeBestBalance File(*.mbb) | *.mbb");
+
+			fileManager.SavePlayers(savePath, PlayerManager.Instance.GetPlayers());
+		}
+
+		private void LoadPlayersFromFile(object sender, EventArgs e)
+		{
+			var fileManager = FileManager.Instace;
+			var loadPath = fileManager.OpenFileDirectoryWindow("로드할 파일을 선택해주세요.", "mbb", "MakeBestBalance File(*.mbb) | *.mbb");
+
+			var players = fileManager.LoadPlayers(loadPath);
+			foreach (var player in players)
+			{
+				PlayerManager.Instance.AddPlayer(player);
+			}
+
+			PlayerManager.Instance.UpdatePlayerGrid();
+		}
 	}
 }

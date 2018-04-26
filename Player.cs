@@ -15,6 +15,7 @@ namespace MakeBestBalance_LoL
 		Support = 4,
 	}
 
+	[Serializable]
 	internal sealed class Player
 	{
 		public const int positionNumber = 5;

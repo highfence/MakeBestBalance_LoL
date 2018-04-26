@@ -52,5 +52,10 @@ namespace MakeBestBalance_LoL
 		{
 			_players.RemoveAll(player => player.Name == selectedPlayerName);
 		}
+
+		public List<Player> GetPlayers()
+		{
+			return _players;
+		}
 	}
 }
