@@ -28,9 +28,24 @@ namespace MakeBestBalance_LoL
 
 			try
 			{
-				newPlayer.SetScore(PlayerPosition.Top, Convert.ToSingle(TopText.Text));
-				newPlayer.SetScore(PlayerPosition.Jungle, Convert.ToSingle(JungleText.Text));
-				newPlayer.SetScore(PlayerPosition.Mid, Convert.ToSingle(MidText.Text));
+				float topScore     = Convert.ToSingle(TopText.Text);
+				float jungleScore  = Convert.ToSingle(JungleText.Text);
+				float midScore     = Convert.ToSingle(MidText.Text);
+				float adScore      = Convert.ToSingle(AdText.Text);
+				float supportScore = Convert.ToSingle(SupportText.Text);
+
+				if (0.0f > topScore || topScore > 10.0f
+					|| 0.0f > jungleScore || jungleScore > 10.0f
+					|| 0.0f > midScore || midScore > 10.0f
+					|| 0.0f > adScore || adScore > 10.0f
+					|| 0.0f > supportScore || supportScore > 10.0f)
+				{
+					throw new System.InvalidOperationException("점수는 0에서 10점까지의 점수를 입력해주세요.");
+				}
+
+				newPlayer.SetScore(PlayerPosition.Top,     Convert.ToSingle(TopText.Text));
+				newPlayer.SetScore(PlayerPosition.Jungle,  Convert.ToSingle(JungleText.Text));
+				newPlayer.SetScore(PlayerPosition.Mid,     Convert.ToSingle(MidText.Text));
 				newPlayer.SetScore(PlayerPosition.ADCarry, Convert.ToSingle(AdText.Text));
 				newPlayer.SetScore(PlayerPosition.Support, Convert.ToSingle(SupportText.Text));
 
@@ -39,7 +54,7 @@ namespace MakeBestBalance_LoL
 			}
 			catch (Exception exception)
 			{
-				MessageBox.Show($"제대로 된 값을 넣어주세요! ErrorMsg : {exception.Message}");
+				MessageBox.Show($"에러입니다 :D \n ErrorMsg : {exception.Message}");
 			}
 
 			var playerManager = PlayerManager.Instance;

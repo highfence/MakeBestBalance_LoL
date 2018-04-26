@@ -22,12 +22,17 @@ namespace MakeBestBalance_LoL
 
 		private void InsertNewPlayer(object sender, EventArgs e)
 		{
-			using (var insertForm = new NewPlayerBox())
+			var insertForm = new NewPlayerBox();
+			insertForm.ShowDialog();
+		}
+
+		private void DeleteSelectPlayer(object sender, EventArgs e)
+		{
+			var selectedPlayerName = GridManager.Instance.GetSelectedPlayerName();
+			if (String.IsNullOrEmpty(selectedPlayerName) == false)
 			{
-				if (insertForm.ShowDialog() == DialogResult.OK)
-				{
-					
-				}
+				PlayerManager.Instance.DeletePlayerWithName(selectedPlayerName);
+				PlayerManager.Instance.UpdatePlayerGrid();
 			}
 		}
 	}

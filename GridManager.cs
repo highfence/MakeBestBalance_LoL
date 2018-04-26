@@ -67,5 +67,16 @@ namespace MakeBestBalance_LoL
 				_gridView.Rows.Add(name, topValue, jungleValue, midValue, adValue, supportValue, average, 0);
 			}
 		}
+
+		public string GetSelectedPlayerName()
+		{
+			string playerName;
+
+			int selectedRowIdx = _gridView.CurrentCell.RowIndex;
+
+			playerName = _gridView.Rows[selectedRowIdx].Cells[0].Value.ToString();
+
+			return playerName;
+		}
 	}
 }

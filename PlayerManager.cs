@@ -47,5 +47,10 @@ namespace MakeBestBalance_LoL
 			var gridManager = GridManager.Instance;
 			gridManager.AddAllPlayerToGrid(_players);
 		}
+
+		internal void DeletePlayerWithName(string selectedPlayerName)
+		{
+			_players.RemoveAll(player => player.Name == selectedPlayerName);
+		}
 	}
 }
