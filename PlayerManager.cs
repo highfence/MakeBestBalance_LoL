@@ -14,6 +14,7 @@ namespace MakeBestBalance_LoL
 		private PlayerManager()
 		{
 			_players = new List<Player>();
+			_matchPlayers = new List<Player>();
 		}
 
 		public static PlayerManager Instance
@@ -59,10 +60,22 @@ namespace MakeBestBalance_LoL
 			return _players;
 		}
 
-		internal void CheckPlayerForMatching(string selectedPlayerName)
+		internal bool CheckPlayerForMatching(string selectedPlayerName)
 		{
+			// 이미 매칭 플레이어 목록에 있는 경우, 셀렉트 해제 되었다고 판단.
+			if (_matchPlayers.Find(player => player.Name == selectedPlayerName) != null)
+			{
+				_matchPlayers.RemoveAll(player => player.Name == selectedPlayerName);
+				return false;
+			}
+
 			var selectedPlayer = _players.Find(player => player.Name == selectedPlayerName);
 
+			var copyedPlayer = selectedPlayer.Clone();
+
+			_matchPlayers.Add(selectedPlayer);
+
+			return true;
 		}
 	}
 }

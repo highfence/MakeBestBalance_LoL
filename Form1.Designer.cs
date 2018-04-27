@@ -70,6 +70,7 @@
 			this.PlayerGridView.Size = new System.Drawing.Size(841, 790);
 			this.PlayerGridView.TabIndex = 2;
 			this.PlayerGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerGridView_CellContentDoubleClick);
+			this.PlayerGridView.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerGridView_CellContentDoubleClick);
 			// 
 			// SavePlayersButton
 			// 

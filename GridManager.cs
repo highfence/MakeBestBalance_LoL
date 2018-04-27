@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +35,7 @@ namespace MakeBestBalance_LoL
 		public void Initialize(DataGridView dataGridView)
 		{
 			_gridView = dataGridView;
+			_gridView.ReadOnly = true;
 
 			_gridView.ColumnCount = 8;
 			_gridView.Columns[0].Name = "이름";
@@ -71,9 +73,20 @@ namespace MakeBestBalance_LoL
 		{
 			string playerName;
 
+			if (_gridView.Rows[rowIndex].Cells[0].Value == null)
+				return;
+
 			playerName = _gridView.Rows[rowIndex].Cells[0].Value.ToString();
 
-			PlayerManager.Instance.CheckPlayerToMatching(playerName);
+			var playerSelected = PlayerManager.Instance.CheckPlayerForMatching(playerName);
+
+			for (int i = 0; i < 8; ++i)
+			{
+				if (playerSelected)
+					_gridView.Rows[rowIndex].Cells[i].Style.BackColor = Color.AntiqueWhite;
+				else
+					_gridView.Rows[rowIndex].Cells[i].Style.BackColor = Color.White;
+			}
 		}
 
 		public string GetSelectedPlayerName()
@@ -81,6 +94,9 @@ namespace MakeBestBalance_LoL
 			string playerName;
 
 			int selectedRowIdx = _gridView.CurrentCell.RowIndex;
+
+			if (_gridView.Rows[selectedRowIdx].Cells[0].Value == null)
+				return null;
 
 			playerName = _gridView.Rows[selectedRowIdx].Cells[0].Value.ToString();
 

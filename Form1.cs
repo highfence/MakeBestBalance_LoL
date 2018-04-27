@@ -69,8 +69,6 @@ namespace MakeBestBalance_LoL
 		private void PlayerGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			GridManager.Instance.SelectPlayer(e.RowIndex);
-
-
 		}
 	}
 }
