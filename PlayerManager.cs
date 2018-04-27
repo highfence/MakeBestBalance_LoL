@@ -58,5 +58,11 @@ namespace MakeBestBalance_LoL
 		{
 			return _players;
 		}
+
+		internal void CheckPlayerForMatching(string selectedPlayerName)
+		{
+			var selectedPlayer = _players.Find(player => player.Name == selectedPlayerName);
+
+		}
 	}
 }

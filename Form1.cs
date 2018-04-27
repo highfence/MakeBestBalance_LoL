@@ -16,18 +16,22 @@ namespace MakeBestBalance_LoL
 		{
 			InitializeComponent();
 
-			var gridManager = GridManager.Instance;
-			gridManager.Initialize(PlayerGridView);
+			GridManager.Instance.Initialize(PlayerGridView);
+			TabManager.Instance.Initialize(Tabs);
 		}
 
 		private void InsertNewPlayer(object sender, EventArgs e)
 		{
+			TabManager.Instance.SetTabFocus(TabName.playerList);
+
 			var insertForm = new NewPlayerBox();
 			insertForm.ShowDialog();
 		}
 
 		private void DeleteSelectPlayer(object sender, EventArgs e)
 		{
+			TabManager.Instance.SetTabFocus(TabName.playerList);
+
 			var selectedPlayerName = GridManager.Instance.GetSelectedPlayerName();
 			if (String.IsNullOrEmpty(selectedPlayerName) == false)
 			{
@@ -38,6 +42,8 @@ namespace MakeBestBalance_LoL
 
 		private void SavePlayerListToFile(object sender, EventArgs e)
 		{
+			TabManager.Instance.SetTabFocus(TabName.playerList);
+
 			var fileManager = FileManager.Instace;
 			var savePath = fileManager.OpenSaveFileDirectoryWindow("저장할 폴더를 선택해주세요.", "mbb", "MakeBestBalance File(*.mbb) | *.mbb");
 
@@ -46,6 +52,8 @@ namespace MakeBestBalance_LoL
 
 		private void LoadPlayersFromFile(object sender, EventArgs e)
 		{
+			TabManager.Instance.SetTabFocus(TabName.playerList);
+
 			var fileManager = FileManager.Instace;
 			var loadPath = fileManager.OpenFileDirectoryWindow("로드할 파일을 선택해주세요.", "mbb", "MakeBestBalance File(*.mbb) | *.mbb");
 
@@ -56,6 +64,13 @@ namespace MakeBestBalance_LoL
 			}
 
 			PlayerManager.Instance.UpdatePlayerGrid();
+		}
+
+		private void PlayerGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+		{
+			GridManager.Instance.SelectPlayer(e.RowIndex);
+
+
 		}
 	}
 }

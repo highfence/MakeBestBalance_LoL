@@ -67,6 +67,15 @@ namespace MakeBestBalance_LoL
 			}
 		}
 
+		internal void SelectPlayer(int rowIndex)
+		{
+			string playerName;
+
+			playerName = _gridView.Rows[rowIndex].Cells[0].Value.ToString();
+
+			PlayerManager.Instance.CheckPlayerToMatching(playerName);
+		}
+
 		public string GetSelectedPlayerName()
 		{
 			string playerName;

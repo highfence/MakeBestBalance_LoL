@@ -33,11 +33,11 @@
 			this.PlayerGridView = new System.Windows.Forms.DataGridView();
 			this.SavePlayersButton = new System.Windows.Forms.Button();
 			this.LoadPlayersButton = new System.Windows.Forms.Button();
-			this.PlayerListPage = new System.Windows.Forms.TabControl();
+			this.Tabs = new System.Windows.Forms.TabControl();
 			this.PlayerManagePage = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.MatchingList = new System.Windows.Forms.TabPage();
 			((System.ComponentModel.ISupportInitialize)(this.PlayerGridView)).BeginInit();
-			this.PlayerListPage.SuspendLayout();
+			this.Tabs.SuspendLayout();
 			this.PlayerManagePage.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -69,6 +69,7 @@
 			this.PlayerGridView.RowTemplate.Height = 23;
 			this.PlayerGridView.Size = new System.Drawing.Size(841, 790);
 			this.PlayerGridView.TabIndex = 2;
+			this.PlayerGridView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.PlayerGridView_CellContentDoubleClick);
 			// 
 			// SavePlayersButton
 			// 
@@ -90,15 +91,15 @@
 			this.LoadPlayersButton.UseVisualStyleBackColor = true;
 			this.LoadPlayersButton.Click += new System.EventHandler(this.LoadPlayersFromFile);
 			// 
-			// PlayerListPage
+			// Tabs
 			// 
-			this.PlayerListPage.Controls.Add(this.PlayerManagePage);
-			this.PlayerListPage.Controls.Add(this.tabPage2);
-			this.PlayerListPage.Location = new System.Drawing.Point(12, 12);
-			this.PlayerListPage.Name = "PlayerListPage";
-			this.PlayerListPage.SelectedIndex = 0;
-			this.PlayerListPage.Size = new System.Drawing.Size(849, 816);
-			this.PlayerListPage.TabIndex = 5;
+			this.Tabs.Controls.Add(this.PlayerManagePage);
+			this.Tabs.Controls.Add(this.MatchingList);
+			this.Tabs.Location = new System.Drawing.Point(12, 12);
+			this.Tabs.Name = "Tabs";
+			this.Tabs.SelectedIndex = 0;
+			this.Tabs.Size = new System.Drawing.Size(849, 816);
+			this.Tabs.TabIndex = 5;
 			// 
 			// PlayerManagePage
 			// 
@@ -111,22 +112,22 @@
 			this.PlayerManagePage.Text = "선수 관리";
 			this.PlayerManagePage.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
+			// MatchingList
 			// 
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(841, 790);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "tabPage2";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.MatchingList.Location = new System.Drawing.Point(4, 22);
+			this.MatchingList.Name = "MatchingList";
+			this.MatchingList.Padding = new System.Windows.Forms.Padding(3);
+			this.MatchingList.Size = new System.Drawing.Size(841, 790);
+			this.MatchingList.TabIndex = 1;
+			this.MatchingList.Text = "매칭 선수 목록";
+			this.MatchingList.UseVisualStyleBackColor = true;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1061, 858);
-			this.Controls.Add(this.PlayerListPage);
+			this.Controls.Add(this.Tabs);
 			this.Controls.Add(this.LoadPlayersButton);
 			this.Controls.Add(this.SavePlayersButton);
 			this.Controls.Add(this.DeletePlayerButton);
@@ -134,7 +135,7 @@
 			this.Name = "Form1";
 			this.Text = "MakeBestBalance_LoL v1.0.0";
 			((System.ComponentModel.ISupportInitialize)(this.PlayerGridView)).EndInit();
-			this.PlayerListPage.ResumeLayout(false);
+			this.Tabs.ResumeLayout(false);
 			this.PlayerManagePage.ResumeLayout(false);
 			this.ResumeLayout(false);
 
@@ -147,9 +148,9 @@
 		private System.Windows.Forms.DataGridView PlayerGridView;
 		private System.Windows.Forms.Button SavePlayersButton;
 		private System.Windows.Forms.Button LoadPlayersButton;
-		private System.Windows.Forms.TabControl PlayerListPage;
+		private System.Windows.Forms.TabControl Tabs;
 		private System.Windows.Forms.TabPage PlayerManagePage;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage MatchingList;
 	}
 }
 

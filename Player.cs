@@ -16,7 +16,7 @@ namespace MakeBestBalance_LoL
 	}
 
 	[Serializable]
-	internal sealed class Player
+	internal sealed class Player : ICloneable
 	{
 		public const int positionNumber = 5;
 
@@ -44,6 +44,22 @@ namespace MakeBestBalance_LoL
 		{
 			int scoreIdx = Convert.ToInt32(position);
 			return _scores[scoreIdx];
+		}
+
+		public object Clone()
+		{
+			var copyedPlayer = new Player();
+
+			for (int scoreIdx = 0; scoreIdx < _scores.Length; ++scoreIdx)
+			{
+				copyedPlayer._scores[scoreIdx] = _scores[scoreIdx];
+			}
+
+			copyedPlayer.Name = Name;
+			copyedPlayer.GameId = GameId;
+			// MMR은 추후 구현 예정. (선수 목록에서 관리하지 않는 것이 더 나을 것 같다.)
+
+			return copyedPlayer;
 		}
 	}
 }
