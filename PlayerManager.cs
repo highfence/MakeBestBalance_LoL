@@ -29,6 +29,7 @@ namespace MakeBestBalance_LoL
 		#endregion
 
 		public List<Player> _players;
+		public List<Player> _matchPlayers;
 
 		internal void AddPlayer(Player newPlayer)
 		{

@@ -33,12 +33,12 @@
 			this.PlayerGridView = new System.Windows.Forms.DataGridView();
 			this.SavePlayersButton = new System.Windows.Forms.Button();
 			this.LoadPlayersButton = new System.Windows.Forms.Button();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
+			this.PlayerListPage = new System.Windows.Forms.TabControl();
+			this.PlayerManagePage = new System.Windows.Forms.TabPage();
 			this.tabPage2 = new System.Windows.Forms.TabPage();
 			((System.ComponentModel.ISupportInitialize)(this.PlayerGridView)).BeginInit();
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
+			this.PlayerListPage.SuspendLayout();
+			this.PlayerManagePage.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// InsertPlayerButton
@@ -90,26 +90,26 @@
 			this.LoadPlayersButton.UseVisualStyleBackColor = true;
 			this.LoadPlayersButton.Click += new System.EventHandler(this.LoadPlayersFromFile);
 			// 
-			// tabControl1
+			// PlayerListPage
 			// 
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Location = new System.Drawing.Point(12, 12);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(849, 816);
-			this.tabControl1.TabIndex = 5;
+			this.PlayerListPage.Controls.Add(this.PlayerManagePage);
+			this.PlayerListPage.Controls.Add(this.tabPage2);
+			this.PlayerListPage.Location = new System.Drawing.Point(12, 12);
+			this.PlayerListPage.Name = "PlayerListPage";
+			this.PlayerListPage.SelectedIndex = 0;
+			this.PlayerListPage.Size = new System.Drawing.Size(849, 816);
+			this.PlayerListPage.TabIndex = 5;
 			// 
-			// tabPage1
+			// PlayerManagePage
 			// 
-			this.tabPage1.Controls.Add(this.PlayerGridView);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(841, 790);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "tabPage1";
-			this.tabPage1.UseVisualStyleBackColor = true;
+			this.PlayerManagePage.Controls.Add(this.PlayerGridView);
+			this.PlayerManagePage.Location = new System.Drawing.Point(4, 22);
+			this.PlayerManagePage.Name = "PlayerManagePage";
+			this.PlayerManagePage.Padding = new System.Windows.Forms.Padding(3);
+			this.PlayerManagePage.Size = new System.Drawing.Size(841, 790);
+			this.PlayerManagePage.TabIndex = 0;
+			this.PlayerManagePage.Text = "선수 관리";
+			this.PlayerManagePage.UseVisualStyleBackColor = true;
 			// 
 			// tabPage2
 			// 
@@ -126,16 +126,16 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1061, 858);
-			this.Controls.Add(this.tabControl1);
+			this.Controls.Add(this.PlayerListPage);
 			this.Controls.Add(this.LoadPlayersButton);
 			this.Controls.Add(this.SavePlayersButton);
 			this.Controls.Add(this.DeletePlayerButton);
 			this.Controls.Add(this.InsertPlayerButton);
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "MakeBestBalance_LoL v1.0.0";
 			((System.ComponentModel.ISupportInitialize)(this.PlayerGridView)).EndInit();
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
+			this.PlayerListPage.ResumeLayout(false);
+			this.PlayerManagePage.ResumeLayout(false);
 			this.ResumeLayout(false);
 
 		}
@@ -147,8 +147,8 @@
 		private System.Windows.Forms.DataGridView PlayerGridView;
 		private System.Windows.Forms.Button SavePlayersButton;
 		private System.Windows.Forms.Button LoadPlayersButton;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.TabPage tabPage1;
+		private System.Windows.Forms.TabControl PlayerListPage;
+		private System.Windows.Forms.TabPage PlayerManagePage;
 		private System.Windows.Forms.TabPage tabPage2;
 	}
 }
