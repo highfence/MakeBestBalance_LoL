@@ -36,6 +36,8 @@
 			this.Tabs = new System.Windows.Forms.TabControl();
 			this.PlayerManagePage = new System.Windows.Forms.TabPage();
 			this.MatchingList = new System.Windows.Forms.TabPage();
+			this.MatchPlayerCount = new System.Windows.Forms.Label();
+			this.SelectAllPlayerCheckBox = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.PlayerGridView)).BeginInit();
 			this.Tabs.SuspendLayout();
 			this.PlayerManagePage.SuspendLayout();
@@ -123,11 +125,33 @@
 			this.MatchingList.Text = "매칭 선수 목록";
 			this.MatchingList.UseVisualStyleBackColor = true;
 			// 
+			// MatchPlayerCount
+			// 
+			this.MatchPlayerCount.AutoSize = true;
+			this.MatchPlayerCount.Location = new System.Drawing.Point(875, 782);
+			this.MatchPlayerCount.Name = "MatchPlayerCount";
+			this.MatchPlayerCount.Size = new System.Drawing.Size(103, 12);
+			this.MatchPlayerCount.TabIndex = 6;
+			this.MatchPlayerCount.Text = "선택된 선수 수 : 0";
+			// 
+			// SelectAllPlayerCheckBox
+			// 
+			this.SelectAllPlayerCheckBox.AutoSize = true;
+			this.SelectAllPlayerCheckBox.Location = new System.Drawing.Point(877, 807);
+			this.SelectAllPlayerCheckBox.Name = "SelectAllPlayerCheckBox";
+			this.SelectAllPlayerCheckBox.Size = new System.Drawing.Size(128, 16);
+			this.SelectAllPlayerCheckBox.TabIndex = 7;
+			this.SelectAllPlayerCheckBox.Text = "모든 선수 선택하기";
+			this.SelectAllPlayerCheckBox.UseVisualStyleBackColor = true;
+			this.SelectAllPlayerCheckBox.CheckStateChanged += new System.EventHandler(this.SelectAllPlayerCheckBox_CheckStateChanged);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1061, 858);
+			this.Controls.Add(this.SelectAllPlayerCheckBox);
+			this.Controls.Add(this.MatchPlayerCount);
 			this.Controls.Add(this.Tabs);
 			this.Controls.Add(this.LoadPlayersButton);
 			this.Controls.Add(this.SavePlayersButton);
@@ -139,6 +163,7 @@
 			this.Tabs.ResumeLayout(false);
 			this.PlayerManagePage.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 
 		}
 
@@ -152,6 +177,8 @@
 		private System.Windows.Forms.TabControl Tabs;
 		private System.Windows.Forms.TabPage PlayerManagePage;
 		private System.Windows.Forms.TabPage MatchingList;
+		private System.Windows.Forms.Label MatchPlayerCount;
+		private System.Windows.Forms.CheckBox SelectAllPlayerCheckBox;
 	}
 }
 

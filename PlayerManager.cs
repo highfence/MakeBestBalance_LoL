@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MakeBestBalance_LoL
 {
@@ -31,6 +32,14 @@ namespace MakeBestBalance_LoL
 
 		public List<Player> _players;
 		public List<Player> _matchPlayers;
+		Label _matchPlayerLabel;
+
+		public void Initialize(Label label)
+		{
+			_matchPlayerLabel = label;
+
+			UpdateMatchPlayerCount();
+		}
 
 		internal void AddPlayer(Player newPlayer)
 		{
@@ -71,11 +80,36 @@ namespace MakeBestBalance_LoL
 
 			var selectedPlayer = _players.Find(player => player.Name == selectedPlayerName);
 
-			var copyedPlayer = selectedPlayer.Clone();
+			var copiedPlayer = selectedPlayer.Clone() as Player;
 
-			_matchPlayers.Add(selectedPlayer);
+			_matchPlayers.Add(copiedPlayer);
 
 			return true;
+		}
+
+		internal void UpdateMatchPlayerCount()
+		{
+			if (_matchPlayerLabel == null)
+				return;
+
+			string matchPlayerText = $"선택된 선수 수 : {_matchPlayers.Count}";
+
+			_matchPlayerLabel.Text = matchPlayerText;
+		}
+
+		internal void CheckMatchAll(bool isChecked)
+		{
+			_matchPlayers.Clear();
+			if (isChecked)
+			{
+				foreach (var player in _players)
+				{
+					var copiedPlayer = player.Clone() as Player;
+					_matchPlayers.Add(copiedPlayer);	
+				}
+			}
+
+			UpdateMatchPlayerCount();
 		}
 	}
 }

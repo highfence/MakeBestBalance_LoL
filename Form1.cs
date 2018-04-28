@@ -16,6 +16,7 @@ namespace MakeBestBalance_LoL
 		{
 			InitializeComponent();
 
+			PlayerManager.Instance.Initialize(MatchPlayerCount);
 			GridManager.Instance.Initialize(PlayerGridView);
 			TabManager.Instance.Initialize(Tabs);
 		}
@@ -69,6 +70,13 @@ namespace MakeBestBalance_LoL
 		private void PlayerGridView_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
 		{
 			GridManager.Instance.SelectPlayer(e.RowIndex);
+		}
+
+		private void SelectAllPlayerCheckBox_CheckStateChanged(object sender, EventArgs e)
+		{
+			var isChecked = SelectAllPlayerCheckBox.Checked;
+			PlayerManager.Instance.CheckMatchAll(isChecked);
+			GridManager.Instance.CheckMatchAll(isChecked);
 		}
 	}
 }

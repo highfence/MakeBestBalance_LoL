@@ -79,14 +79,44 @@ namespace MakeBestBalance_LoL
 			playerName = _gridView.Rows[rowIndex].Cells[0].Value.ToString();
 
 			var playerSelected = PlayerManager.Instance.CheckPlayerForMatching(playerName);
+			PlayerManager.Instance.UpdateMatchPlayerCount();
 
-			for (int i = 0; i < 8; ++i)
+			if (playerSelected)
+				MakeRowColored(rowIndex, Color.AntiqueWhite);
+			else
+				MakeRowColored(rowIndex, Color.White);
+
+			PlayerManager.Instance.UpdateMatchPlayerCount();
+		}
+
+		private void MakeRowColored(int rowIndex, Color color)
+		{
+			if (_gridView == null)
+				return;
+
+			var maxCellCount = _gridView.Rows[rowIndex].Cells.Count;
+			for (int i = 0; i < maxCellCount; ++i)
 			{
-				if (playerSelected)
-					_gridView.Rows[rowIndex].Cells[i].Style.BackColor = Color.AntiqueWhite;
-				else
-					_gridView.Rows[rowIndex].Cells[i].Style.BackColor = Color.White;
+				_gridView.Rows[rowIndex].Cells[i].Style.BackColor = color;
 			}
+		}
+
+		internal void CheckMatchAll(bool isChecked)
+		{
+			var maxRowIdx = _gridView.Rows.Count;
+			
+			for (int i = 0; i < maxRowIdx; ++i)
+			{
+				if (_gridView.Rows[i].Cells[0].Value == null)
+					continue;
+
+				if (isChecked)
+					MakeRowColored(i, Color.AntiqueWhite);
+				else
+					MakeRowColored(i, Color.White);
+			}
+
+			PlayerManager.Instance.UpdateMatchPlayerCount();
 		}
 
 		public string GetSelectedPlayerName()
