@@ -50,7 +50,7 @@ namespace MakeBestBalance_LoL
 				_players = new List<Player>();
 
 			_players.Add(newPlayer);
-			UpdatePlayerGrid();
+			GridManager.Instance.AddOnePlayerToGrid(newPlayer);
 		}
 
 		public void UpdatePlayerGrid()

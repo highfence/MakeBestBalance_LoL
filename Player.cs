@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MakeBestBalance_LoL
 {
-	internal enum PlayerPosition
+	public enum PlayerPosition
 	{
 		Top     = 0,
 		Jungle  = 1,
@@ -16,7 +16,7 @@ namespace MakeBestBalance_LoL
 	}
 
 	[Serializable]
-	internal sealed class Player : ICloneable
+	public sealed class Player : ICloneable
 	{
 		public const int positionNumber = 5;
 
@@ -48,18 +48,18 @@ namespace MakeBestBalance_LoL
 
 		public object Clone()
 		{
-			var copyedPlayer = new Player();
+			var copiedPlayer = new Player();
 
 			for (int scoreIdx = 0; scoreIdx < _scores.Length; ++scoreIdx)
 			{
-				copyedPlayer._scores[scoreIdx] = _scores[scoreIdx];
+				copiedPlayer._scores[scoreIdx] = _scores[scoreIdx];
 			}
 
-			copyedPlayer.Name = Name;
-			copyedPlayer.GameId = GameId;
+			copiedPlayer.Name = Name;
+			copiedPlayer.GameId = GameId;
 			// MMR은 추후 구현 예정. (선수 목록에서 관리하지 않는 것이 더 나을 것 같다.)
 
-			return copyedPlayer;
+			return copiedPlayer;
 		}
 	}
 }

@@ -78,5 +78,11 @@ namespace MakeBestBalance_LoL
 			PlayerManager.Instance.CheckMatchAll(isChecked);
 			GridManager.Instance.CheckMatchAll(isChecked);
 		}
+
+		private void MatchingStartButton_Click(object sender, EventArgs e)
+		{
+			var resultPage = new ResultPage();
+			resultPage.StartEvaluate();
+		}
 	}
 }

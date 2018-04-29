@@ -69,6 +69,22 @@ namespace MakeBestBalance_LoL
 			}
 		}
 
+		public void AddOnePlayerToGrid(Player playerInfo)
+		{
+			if (_gridView == null || playerInfo == null)
+				return;
+
+			string name = playerInfo.Name;
+			float topValue = Convert.ToSingle(Math.Round(playerInfo.GetScore(PlayerPosition.Top), 1));
+			float jungleValue = Convert.ToSingle(Math.Round(playerInfo.GetScore(PlayerPosition.Jungle), 1));
+			float midValue = Convert.ToSingle(Math.Round(playerInfo.GetScore(PlayerPosition.Mid), 1));
+			float adValue = Convert.ToSingle(Math.Round(playerInfo.GetScore(PlayerPosition.ADCarry), 1));
+			float supportValue = Convert.ToSingle(Math.Round(playerInfo.GetScore(PlayerPosition.Support), 1));
+			double average = Math.Round((topValue + jungleValue + midValue + adValue + supportValue) / 5, 2);
+
+			_gridView.Rows.Add(name, topValue, jungleValue, midValue, adValue, supportValue, average, 0);
+		}
+
 		internal void SelectPlayer(int rowIndex)
 		{
 			string playerName;
@@ -122,6 +138,9 @@ namespace MakeBestBalance_LoL
 		public string GetSelectedPlayerName()
 		{
 			string playerName;
+
+			if (_gridView.CurrentCell == null)
+				return "";
 
 			int selectedRowIdx = _gridView.CurrentCell.RowIndex;
 
