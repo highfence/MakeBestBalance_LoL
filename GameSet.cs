@@ -16,7 +16,9 @@ namespace MakeBestBalance_LoL
 
 		public double Diff { get; set; }
 		public float TeamTotal { get; set; }
-		
+		public float PositionDiffTotal { get; set; }
+		public double BalanceScore { get; set; }
+
 		public GameSet()
 		{
 			_team1 = new List<Player>();
@@ -59,23 +61,41 @@ namespace MakeBestBalance_LoL
 				throw new ApplicationException("GameSet 비교 객체가 null입니다.");
 			}
 
-			if (Diff < otherGameSet.Diff)
-				return -1;
-			else if (Diff == otherGameSet.Diff)
+			if (BalanceScore < otherGameSet.BalanceScore)
+				return 1;
+			else if (BalanceScore == otherGameSet.BalanceScore)
 				return 0;
 			else
-				return 1;
+				return -1;
 		}
 
 		public double CalculateDiff()
 		{
 			float team1Total = 0.0f;
 			float team2Total = 0.0f;
+			PositionDiffTotal = 0.0f;
 
-			for (int i = 0; i < 5; ++i)
+			for (int i = 0; i < 4; ++i)
 			{
-				team1Total += _completeTeam1[i].GetScore((PlayerPosition)i);
-				team2Total += _completeTeam2[i].GetScore((PlayerPosition)i);
+				if (i != 4)
+				{
+					team1Total += _completeTeam1[i].GetScore((PlayerPosition)i);
+					team2Total += _completeTeam2[i].GetScore((PlayerPosition)i);
+				}
+				else
+				{
+					team1Total += _completeTeam1[3].GetScore(PlayerPosition.ADCarry) * 0.25f + _completeTeam1[4].GetScore(PlayerPosition.Support) * 0.75f;
+					team2Total += _completeTeam2[3].GetScore(PlayerPosition.ADCarry) * 0.25f + _completeTeam2[4].GetScore(PlayerPosition.Support) * 0.75f;
+				}
+
+				if (i != 4)
+				{
+					PositionDiffTotal += Math.Abs(_completeTeam1[i].GetScore((PlayerPosition)i) - _completeTeam2[i].GetScore((PlayerPosition)i));
+				}
+				else
+				{
+					PositionDiffTotal += Math.Abs(_completeTeam1[3].GetScore(PlayerPosition.ADCarry) * 0.25f + _completeTeam1[4].GetScore(PlayerPosition.Support) * 0.75f - _completeTeam2[3].GetScore(PlayerPosition.ADCarry) * 0.25f - _completeTeam2[4].GetScore(PlayerPosition.Support) * 0.75f);
+				}
 			}
 
 			TeamTotal = team1Total + team2Total;
@@ -101,6 +121,9 @@ namespace MakeBestBalance_LoL
 			this._completeTeam2.CopyTo(copiedGameSet._completeTeam2, 0);
 
 			copiedGameSet.Diff = this.Diff;
+			copiedGameSet.TeamTotal = this.TeamTotal;
+			copiedGameSet.PositionDiffTotal = this.PositionDiffTotal;
+			copiedGameSet.BalanceScore = this.BalanceScore;
 
 			return copiedGameSet;
 		}

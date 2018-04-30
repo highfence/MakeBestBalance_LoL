@@ -59,6 +59,9 @@ namespace MakeBestBalance_LoL
 			var loadPath = fileManager.OpenFileDirectoryWindow("로드할 파일을 선택해주세요.", "mbb", "MakeBestBalance File(*.mbb) | *.mbb");
 
 			var players = fileManager.LoadPlayers(loadPath);
+			if (players == null)
+				return;
+
 			foreach (var player in players)
 			{
 				PlayerManager.Instance.AddPlayer(player);

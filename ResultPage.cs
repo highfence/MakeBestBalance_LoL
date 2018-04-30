@@ -24,11 +24,14 @@ namespace MakeBestBalance_LoL
 
 			var matchResults = MatchMaker.MakeMatch(matchPlayers, conditions, ref progressBar1, ref ProgressLabel);
 
-			int pageIdx = 1;
-			foreach (var gameSet in matchResults)
+			if (matchResults != null)
 			{
-				DrawResults(gameSet, pageIdx);
-				++pageIdx;
+				int pageIdx = 1;
+				foreach (var gameSet in matchResults)
+				{
+					DrawResults(gameSet, pageIdx);
+					++pageIdx;
+				}
 			}
 
 			ShowDialog();
@@ -59,7 +62,7 @@ namespace MakeBestBalance_LoL
 			currentDataGridView.Columns[2].Name = "MMR";
 			currentDataGridView.Columns[3].Name = "Team2 이름";
 			currentDataGridView.Columns[4].Name = "점수";
-			currentDataGridView.Columns[5].Name = "MRR";
+			currentDataGridView.Columns[5].Name = "MMR";
 
 			// TOP
 			currentDataGridView.Rows.Add("TOP", "", "", "", "", "");
@@ -109,8 +112,10 @@ namespace MakeBestBalance_LoL
 			var team1Total = topPlayer1.GetScore(PlayerPosition.Top) + jgPlayer1.GetScore(PlayerPosition.Jungle) + midPlayer1.GetScore(PlayerPosition.Mid) + adPlayer1.GetScore(PlayerPosition.ADCarry) + spPlayer1.GetScore(PlayerPosition.Support);
 			var team2Total = topPlayer2.GetScore(PlayerPosition.Top) + jgPlayer2.GetScore(PlayerPosition.Jungle) + midPlayer2.GetScore(PlayerPosition.Mid) + adPlayer2.GetScore(PlayerPosition.ADCarry) + spPlayer2.GetScore(PlayerPosition.Support);
 
-			currentDataGridView.Rows.Add("Team1 Total", "", "", "Team2 Total", "", "Difference");
-			currentDataGridView.Rows.Add(team1Total, "", "", team2Total, "", Math.Abs(team1Total - team2Total));
+			currentDataGridView.Rows.Add("Team1 Total", "", "", "Team2 Total", "", "Balance Score");
+			currentDataGridView.Rows.Add(team1Total, "", "", team2Total, "", matchResult.BalanceScore);
+			currentDataGridView.Rows.Add("Balance Score", "팀 점수 차이", "팀 점수 총합", "각 포지션별 차이 총합");
+			currentDataGridView.Rows.Add("", "30%", "50%", "20%");
 		}
 	}
 }

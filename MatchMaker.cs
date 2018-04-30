@@ -130,11 +130,12 @@ namespace MakeBestBalance_LoL
 					var diff = gameSet.CalculateDiff();
 					var totalTeamScore = gameSet.TeamTotal;
 
-					var diffScore = (10 - diff) * 0.8 + totalTeamScore * 0.2;
+					var diffScore = (10 - diff) * 3 + totalTeamScore * 1.5 + (10 - gameSet.PositionDiffTotal) * 2;
 
 					if (diffScore > bestDiffScore)
 					{
-						bestDiffScore = diff;
+						bestDiffScore = diffScore;
+						gameSet.BalanceScore = diffScore;
 						bestGameSet = gameSet.Clone() as GameSet;
 					}
 				}

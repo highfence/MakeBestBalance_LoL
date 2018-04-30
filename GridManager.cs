@@ -40,8 +40,8 @@ namespace MakeBestBalance_LoL
 			_gridView.ColumnCount = 8;
 			_gridView.Columns[0].Name = "이름";
 			_gridView.Columns[1].Name = "TOP";
-			_gridView.Columns[2].Name = "MID";
-			_gridView.Columns[3].Name = "JUNGLE";
+			_gridView.Columns[2].Name = "JUNGLE";
+			_gridView.Columns[3].Name = "MID";
 			_gridView.Columns[4].Name = "AD CARRY";
 			_gridView.Columns[5].Name = "SUPPORT";
 			_gridView.Columns[6].Name = "AVERAGE";
