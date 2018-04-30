@@ -15,6 +15,7 @@ namespace MakeBestBalance_LoL
 		public Player[] _completeTeam2;
 
 		public double Diff { get; set; }
+		public float TeamTotal { get; set; }
 		
 		public GameSet()
 		{
@@ -77,6 +78,7 @@ namespace MakeBestBalance_LoL
 				team2Total += _completeTeam2[i].GetScore((PlayerPosition)i);
 			}
 
+			TeamTotal = team1Total + team2Total;
 			Diff = Math.Abs(team1Total - team2Total);
 
 			return Diff;

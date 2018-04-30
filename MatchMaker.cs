@@ -113,7 +113,7 @@ namespace MakeBestBalance_LoL
 
 		private static void MakeGameSetBestDiff(ref GameSet gameSet)
 		{
-			double bestDiff = Double.MaxValue;
+			double bestDiffScore = Double.MinValue;
 			GameSet bestGameSet = null;
 
 			List<List<int>> team1Enum = GetPermutations(Enumerable.Range(0, 5).ToList(), 5);
@@ -128,10 +128,13 @@ namespace MakeBestBalance_LoL
 				{
 					gameSet.SetCompletedTeam(team1Case, team2Case);
 					var diff = gameSet.CalculateDiff();
+					var totalTeamScore = gameSet.TeamTotal;
 
-					if (diff < bestDiff)
+					var diffScore = (10 - diff) * 0.8 + totalTeamScore * 0.2;
+
+					if (diffScore > bestDiffScore)
 					{
-						bestDiff = diff;
+						bestDiffScore = diff;
 						bestGameSet = gameSet.Clone() as GameSet;
 					}
 				}
