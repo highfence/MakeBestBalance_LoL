@@ -26,9 +26,9 @@ namespace MakeBestBalance_LoL
 
 		public int Mmr { get; set; }
 
-		internal Player()
+		public Player()
 		{
-			int positionMaxNumber = Enum.GetValues(typeof(PlayerPosition)).Cast<int>().Last();
+			int positionMaxNumber = Enum.GetValues(typeof(PlayerPosition)).Length;
 			_scores = new float[positionMaxNumber];
 			Array.Clear(_scores, 0, positionMaxNumber);
 		}

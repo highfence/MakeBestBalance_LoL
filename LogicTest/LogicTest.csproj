@@ -48,5 +48,15 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DomainClassLib\DomainClassLib.csproj">
+      <Project>{2a350d38-4ae0-4739-83c1-e729aaedda5e}</Project>
+      <Name>DomainClassLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLib\LogicLib.fsproj">
+      <Project>{64838adc-b747-4048-916d-9af040ce4bd2}</Project>
+      <Name>LogicLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

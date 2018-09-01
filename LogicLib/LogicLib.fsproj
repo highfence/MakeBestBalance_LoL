@@ -5,8 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="TestScript.fsx" />
     <Compile Include="Math.fs" />
     <Compile Include="Library.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DomainClassLib\DomainClassLib.csproj" />
   </ItemGroup>
 
 </Project>

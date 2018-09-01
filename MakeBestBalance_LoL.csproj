@@ -108,11 +108,5 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="LogicLib\LogicLib.fsproj">
-      <Project>{64838adc-b747-4048-916d-9af040ce4bd2}</Project>
-      <Name>LogicLib</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
