@@ -18,8 +18,6 @@ namespace MakeBestBalance_LoL
 	[Serializable]
 	public sealed class Player : ICloneable
 	{
-		public const int positionNumber = 5;
-
 		private float[] _scores;
 
 		public string Name { get; set; }
@@ -30,8 +28,9 @@ namespace MakeBestBalance_LoL
 
 		internal Player()
 		{
-			_scores = new float[positionNumber];
-			Array.Clear(_scores, 0, positionNumber);
+			int positionMaxNumber = Enum.GetValues(typeof(PlayerPosition)).Cast<int>().Last();
+			_scores = new float[positionMaxNumber];
+			Array.Clear(_scores, 0, positionMaxNumber);
 		}
 
 		public void SetScore(PlayerPosition position, float score)
